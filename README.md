@@ -23,16 +23,16 @@ To add:
 
 ## Pictures
 
-![alt tag](https://raw.github.com/strus38/RPi-devops/master/img/pict1.png)
-![alt tag](https://raw.github.com/strus38/RPi-devops/master/img/pict2.png)
-![alt tag](https://raw.github.com/strus38/RPi-devops/master/img/pict3.png)
-![alt tag](https://raw.github.com/strus38/RPi-devops/master/img/pict4.png)
-![alt tag](https://raw.github.com/strus38/RPi-devops/master/img/pict5.png)
+![alt tag](./img/pict1.png)
+![alt tag](./img/pict2.png)
+![alt tag](./img/pict3.png)
+![alt tag](./img/pict4.png)
+![alt tag](./img/pict5.png)
 
 
 ## Test
 
-'''
+```
 root@swarm1-pearl in ~
 $ docker run -ti --rm hypriot/rpi-consul members -detailed -rpc-addr=192.168.200.1:8400
 Node          Address             Status  Tags
@@ -50,5 +50,4 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 db3638853b2c        hypriot/rpi-dockerui   "/dockerui -e http://"   9 seconds ago       Up 3 seconds        0.0.0.0:9000->9000/tcp   dockerui
 239df7402319        hypriot/rpi-consul     "/consul agent -serve"   7 hours ago         Up 15 minutes                                bin_consul_1
 5ec8d4dc937d        hypriot/rpi-swarm      "/swarm join --advert"   7 hours ago         Up 14 minutes       2375/tcp                 bin_swarm_1
-'''
-
+```
