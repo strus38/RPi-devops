@@ -1,6 +1,11 @@
 import sys, signal, socket
 import serial, time
 
+## Add it to a crontab entry if you need it to run regularly
+## crontab -e
+## add this line at the bottom:
+## 00 * * * * python /root/lcdprint.py 
+
 print "Welcome in RPi LCD Monitor"
 ser = serial.Serial()
 
