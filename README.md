@@ -1,6 +1,6 @@
-# Personal & TRansportable DevOps Cluster
+# Personal & Transportable DevOps Cluster
 
-Let me introduce you the new dev/ops way … My ‘Personal & Transportable Pi DevOps Cluster' (home made by me of course) J
+Let me introduce you the new dev/ops way … My ‘Personal & Transportable DevOps Cluster'
 
 ## Description
  
