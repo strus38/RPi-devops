@@ -52,4 +52,4 @@ db3638853b2c        hypriot/rpi-dockerui   "/dockerui -e http://"   9 seconds ag
 5ec8d4dc937d        hypriot/rpi-swarm      "/swarm join --advert"   7 hours ago         Up 14 minutes       2375/tcp                 bin_swarm_1
 ```
 
-## Docker on RPi is provided by Hypriot ![Hypriot downloads](http://blog.hypriot.com/downloads/)
+## Docker on RPi is provided by [Hypriot](http://blog.hypriot.com/downloads/)
