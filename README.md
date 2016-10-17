@@ -4,7 +4,7 @@ Let me introduce you the new dev/ops way … My ‘Personal & Transportable DevO
 
 ## Updates
 Now RPis are supported by default, so it becomes really simple with docker-machine (docker 1.12.2)
-
+```
 - Install your RPis from a clean Rasbian image (or be ready to suffer)
 - Edit the /etc/os-release file on your RPIs to change ID to 'Debian'
 - From your local machine run:
@@ -43,6 +43,7 @@ black-pearl    -        generic   Running   tcp://192.168.1.99:2376    black-pea
 swarm2-pearl   -        generic   Running   tcp://192.168.1.198:2376   black-pearl            v1.12.2   
 
 And so on....
+```
 
 ## Description
  
