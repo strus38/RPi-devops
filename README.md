@@ -2,6 +2,48 @@
 
 Let me introduce you the new dev/ops way … My ‘Personal & Transportable DevOps Cluster'
 
+## Updates
+Now RPis are supported by default, so it becomes really simple with docker-machine (docker 1.12.2)
+
+- Install your RPis from a clean Rasbian image (or be ready to suffer)
+- Edit the /etc/os-release file on your RPIs to change ID to 'Debian'
+- From your local machine run:
+    * export TOKEN=$(for i in $(seq 1 32); do echo -n $(echo "obase=16; $(($RANDOM % 16))" | bc); done; echo)
+    * docker-machine create -d generic --engine-storage-driver=overlay --swarm --swarm-master --swarm-image hypriot/rpi-swarm:latest \
+    --swarm-discovery="token://$TOKEN" --generic-ip-address=192.168.1.99 --generic-ssh-user <youruser> black-pearl
+    In case of failure, be careful about the following details (left-over from previous manipulations)
+      $ sudo apt-get remove --purge docker-engine
+      $ sudo apt-get clean
+      - If you have the dpkg config file issue, then create a file /etc/apt/apt.conf.d/local with the following content:
+      Dpkg::Options {
+        "--force-confdef";
+        "--force-confold";
+      }
+      $ sudo mv /etc/systemd/system/docker.service.d /etc/systemd/system/docker.service.d.disabled
+      $ sudo systemctl daemon-reload
+      $ sudo systemctl restart docker
+      
+- Then you should be able to have your master running:
+$ docker-machine ls
+NAME          ACTIVE   DRIVER    STATE     URL                       SWARM                  DOCKER    ERRORS
+black-pearl   -        generic   Running   tcp://192.168.1.99:2376   black-pearl (master)   v1.12.2   
+
+- Then make the other nodes join the party:
+    * docker-machine create -d generic \
+      --engine-storage-driver=overlay --swarm \
+      --swarm-image hypriot/rpi-swarm:latest \
+      --swarm-discovery="token://$TOKEN" --generic-ssh-user <youruser> \
+      --generic-ip-address=192.168.1.198 \
+      swarm2-pearl
+
+- Then you should be able to have your other node running:
+$ docker-machine ls
+NAME           ACTIVE   DRIVER    STATE     URL                        SWARM                  DOCKER    ERRORS
+black-pearl    -        generic   Running   tcp://192.168.1.99:2376    black-pearl (master)   v1.12.2   
+swarm2-pearl   -        generic   Running   tcp://192.168.1.198:2376   black-pearl            v1.12.2   
+
+And so on....
+
 ## Description
  
 In a single (and geek) packaging you get:
@@ -30,7 +72,7 @@ To add:
 ![alt tag](./img/pict5.png)
 
 
-## Test
+## Test (with older version)
 
 ```
 root@swarm1-pearl in ~
